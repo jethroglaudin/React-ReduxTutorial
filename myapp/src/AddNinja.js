@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './Ninjas.css'
 class AddNinja extends Component {
     state = {
         name: null,
