@@ -16,18 +16,29 @@ class App extends Component {
     let ninjas = [...this.state.ninjas, ninja];
     this.setState({
       ninjas: ninjas
-    })
+    });
 
   }
-
   deleteNinja = (id) => {
     let ninjas = this.state.ninjas.filter(ninjas =>{
-      return ninjas.id !== id
-    })
+      return ninjas.id !== id;
+    });
     this.setState({
       ninjas: ninjas
-    })
+    });
   }
+  componentDidMount(){
+ //Fires when the component first mounts the dom
+ console.log('component mounted');
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    //fires when a component has updated
+    console.log('component updated');
+    console.log(prevProps, prevState);
+
+  }
+ 
 
   render() {
   return (
@@ -36,11 +47,7 @@ class App extends Component {
       <p>Welcome :)</p>
     {/* keep code modular by nesting Ninjas */}
     {/* child component */}
-
-      <Ninjas ninjas={this.state.ninjas}/>
-
       <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
-
       <AddNinja addNinja={this.addNinja}/>  
     </div>
   );
