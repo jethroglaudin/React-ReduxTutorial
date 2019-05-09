@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import Ninjas from './Ninjas';
-import AddNinja from './AddNinja';
+import React, { Component } from 'react'
 
+class AddNinja extends Component {
+    state = {
+        name: null,
+        age: null,
+        belt: null
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        });
+    }
 
-class App extends Component {
-  state = {
-    ninjas: [
-      {name: 'Ryu', age: 30, belt: 'black', id: 1},
-      {name: 'Yoshi', age: 20, belt: 'green', id: 2},
-      {name: 'Crystal', age: 25, belt: 'pink', id: 3}
-    ]
-  }
-  render() {
-  return (
-    <div className="App">
-      <h1>My first React app!</h1>
-      <p>Welcome :)</p>
-    {/* keep code modular by nesting Ninjas */}
-    {/* child component */}
-      <Ninjas ninjas={this.state.ninjas}/>
-      <AddNinja />  
-    </div>
-  );
-  }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(this.state);
+        this.props.addNinja(this.state);
+    }
+    render(){
+        return(
+            <div>
+
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" id="name" onChange={this.handleChange} />
+                    <label htmlFor="name">Age: </label>
+                    <input type="text" id="age" onChange={this.handleChange} />
+                    <label htmlFor="name">Belt: </label>
+                    <input type="text" id="belt" onChange={this.handleChange} />
+                    <button>Submit</button>
+                </form>
+            </div>
+        );
+    }
 }
 
-export default App;
+export default AddNinja
