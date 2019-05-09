@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-class Ninjas extends Component {
-    render(){
-        // console.log(this.props);
+//functional component 
+// don't need the state anymore
+ 
+// you could also destructure right inside the () with ({})
+const Ninjas = ({ninjas}) =>  {
         //destructuring or store the props in a variable
-        const { ninjas } = this.props;
+        // const { ninjas } = props;
         const ninjaList = ninjas.map(ninja => {
             return (
                 <div className ="ninja" key={ninja.id}> 
@@ -20,7 +22,7 @@ class Ninjas extends Component {
               { ninjaList }
           </div>
         )
-    }
+    
 }
 
 export default Ninjas
