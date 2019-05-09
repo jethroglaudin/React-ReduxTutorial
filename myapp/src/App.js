@@ -11,6 +11,22 @@ class App extends Component {
       {name: 'Crystal', age: 25, belt: 'pink', id: 3}
     ]
   }
+  addNinja = (ninja) => {
+    ninja.id = Math.random();
+    let ninjas = [...this.state.ninjas, ninja];
+    this.setState({
+      ninjas: ninjas
+    })
+
+  }
+  deleteNinja = (id) => {
+    let ninjas = this.state.ninjas.filter(ninjas =>{
+      return ninjas.id !== id
+    })
+    this.setState({
+      ninjas: ninjas
+    })
+  }
   render() {
   return (
     <div className="App">
@@ -18,8 +34,8 @@ class App extends Component {
       <p>Welcome :)</p>
     {/* keep code modular by nesting Ninjas */}
     {/* child component */}
-      <Ninjas ninjas={this.state.ninjas}/>
-      <AddNinja />  
+      <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
+      <AddNinja addNinja={this.addNinja}/>  
     </div>
   );
   }

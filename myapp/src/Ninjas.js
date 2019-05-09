@@ -4,51 +4,31 @@ import React, { Component } from 'react';
 // don't need the state anymore
 
 // you could also destructure right inside the () with ({})
-const Ninjas = ({ ninjas }) => {
+const Ninjas = ({ ninjas, deleteNinja }) => {
     //destructuring or store the props in a variable
     // const { ninjas } = props;
-    // const ninjaList = ninjas.map(ninja => {
-    //     if (ninja.age > 20){
-    //     return (
-    //         <div className ="ninja" key={ninja.id}> 
-    //         <div>Name: { ninja.name }</div>
-    //         <div>Age: { ninja.age }</div>
-    //         <div>Belt: { ninja.belt }</div>
-    //     </div>
+    const ninjaList = ninjas.map(ninja => {
+        if (ninja.age > 20){
+        return (
+            <div className ="ninja" key={ninja.id}> 
+            <div>Name: { ninja.name }</div>
+            <div>Age: { ninja.age }</div>
+            <div>Belt: { ninja.belt }</div>
+            <button onClick={() => {deleteNinja(ninja.id)}}>Delete Ninja</button>
+        </div>
 
-    //     )
-    //     } else {
-    //         return null
-    //     }
-    // })
-    // const ninjaList = ninjas.map(ninja => {
-    //     //ternary operator condition ? then first return value () : if true then the second () if false
-    //     return ninja.age > 20 ? (
-    //         <div className="ninja" key={ninja.id}>
-    //             <div>Name: {ninja.name}</div>
-    //             <div>Age: {ninja.age}</div>
-    //             <div>Belt: {ninja.belt}</div>
-    //         </div>
-    //     ) : null;
-    // })
+        );
+        } else {
+            return null;
+        }
+    });
+  
     return (
         <div className="ninja-list">
-            {/* you may also place the logic inside the template */}
-            {
-                ninjas.map(ninja => {
-                    //ternary operator condition ? then first return value () : if true then the second () if false
-                    return ninja.age > 20 ? (
-                        <div className="ninja" key={ninja.id}>
-                            <div>Name: {ninja.name}</div>
-                            <div>Age: {ninja.age}</div>
-                            <div>Belt: {ninja.belt}</div>
-                        </div>
-                    ) : null;
-                })
-            }
+            { ninjaList }
         </div>
-    )
+    );
 
-}
+};
 
 export default Ninjas
