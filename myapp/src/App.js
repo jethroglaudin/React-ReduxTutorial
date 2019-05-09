@@ -8,7 +8,9 @@ class App extends Component {
       <h1>My first React app!</h1>
       <p>Welcome :)</p>
     {/* keep code modular by nesting Ninjas */}
-      <Ninjas />
+    {/* child component */}
+      <Ninjas name="Ryu" age="25" belt="black"/>
+      <Ninjas name="Yoshi" age="30" belt="green"/>
 
     </div>
   );
