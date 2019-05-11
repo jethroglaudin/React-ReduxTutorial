@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 
 class Post extends Component {
   state = {
@@ -30,8 +30,8 @@ class Post extends Component {
       <div className="container">
         {post}
       </div>
-    )
+    );
   }
 }
 
-export default Post
+export default Post;
